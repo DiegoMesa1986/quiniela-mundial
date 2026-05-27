@@ -240,7 +240,7 @@ function App() {
             }}>
 
 
-            {["A","B","C","D","E","F","G","H","I","J","K","L"].map((g) => (
+            {["Grupo A","Grupo B","Grupo C","Grupo D","Grupo E","Grupo F","Grupo G","Grupo H","Grupo I","Grupo J","Grupo K","Grupo L"].map((g) => (
               <button
                 key={g}
                 onClick={() => setGroupFilter(g)}
