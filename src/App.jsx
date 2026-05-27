@@ -13,6 +13,7 @@ import {
   scoreContainer
 } from "./styles";
 
+// ✅ PARTIDOS (usa tus 72 aquí)
 const matches = [
   { id: 1, group: "A", date: "11 Jun 2026", stadium: "Estadio Ciudad de México (Azteca)", a: "México", b: "Sudáfrica" },
   { id: 2, group: "A", date: "11 Jun 2026", stadium: "Estadio Guadalajara (Akron)", a: "Corea del Sur", b: "República Checa" },
@@ -89,10 +90,11 @@ const matches = [
 ];
 
 
-// ✅ RESULTADOS REALES 
+// ✅ RESULTADOS REALES
 const results = {
   1: { a: 2, b: 1 },
-  2: { a: 1, b: 1 }
+  2: { a: 1, b: 1 },
+  3: { a: 0, b: 1 }
 };
 
 function App() {
@@ -101,8 +103,9 @@ function App() {
   const [bet, setBet] = useState("");
   const [predictions, setPredictions] = useState({});
   const [participants, setParticipants] = useState([]);
+  const [groupFilter, setGroupFilter] = useState("A");
 
- 
+  // ✅ GUARDAR PREDICCIÓN 
   const handleChange = (matchId, team, value) => {
     setPredictions((prev) => ({
       ...prev,
@@ -115,57 +118,55 @@ function App() {
 
   // ✅ CALCULAR PUNTOS
   const calculateScore = (pred) => {
-  let total = 0;
-  let exact = 0;
-  let winner = 0;
+    let total = 0;
+    let exact = 0;
+    let winner = 0;
 
-  Object.keys(pred).forEach((id) => {
-    const p = pred[id];
-    const r = results[id];
+    Object.keys(pred).forEach((id) => {
+      const p = pred[id];
+      const r = results[id];
 
-    if (!p || !r) return;
+      if (!p || !r) return;
 
-    // 🎯 exacto
-    if (p.a === r.a && p.b === r.b) {
-      total += 3;
-      exact += 1;
-    }
+      if (p.a === r.a && p.b === r.b) {
+        total += 3;
+        exact += 1;
+      } else if (
+        (p.a > p.b && r.a > r.b) ||
+        (p.a < p.b && r.a < r.b) ||
+        (p.a === p.b && r.a === r.b)
+      ) {
+        total += 1;
+        winner += 1;
+      }
+    });
 
-    // ✅ solo ganador o empate
-    else if (
-      (p.a > p.b && r.a > r.b) ||
-      (p.a < p.b && r.a < r.b) ||
-      (p.a === p.b && r.a === r.b)
-    ) {
-      total += 1;
-      winner += 1;
-    }
-  });
+    return { total, exact, winner };
+  };
 
-  return { total, exact, winner };
-};
-``
-
+  // ✅ GUARDAR
   const handleSave = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name) return alert("Nombre requerido");
     if (!emailRegex.test(email)) return alert("Correo inválido");
 
-    // ✅ validar todos los partidos
-    if (Object.keys(predictions).length !== matches.length) {
-      return alert("Completa todos los partidos");
+    for (let m of matches) {
+      const p = predictions[m.id];
+      if (!p || p.a === "" || p.b === "") {
+        return alert("Completa todos los partidos");
+      }
     }
 
     const scoreData = calculateScore(predictions);
 
-    // ✅ evitar duplicados
     const snapshot = await getDocs(collection(db, "predictions"));
-    const exists = snapshot.docs.some(d => d.data().email === email);
+    const exists = snapshot.docs.some(
+      (d) => d.data().email === email
+    );
 
     if (exists) return alert("Correo ya registrado");
 
-    
     await addDoc(collection(db, "predictions"), {
       name,
       email,
@@ -176,142 +177,157 @@ function App() {
       winner: scoreData.winner
     });
 
-
-    alert("✅ Guardado con puntos: " + score);
+    alert("✅ Guardado!");
 
     setName("");
     setEmail("");
     setBet("");
     setPredictions({});
+
     loadParticipants();
   };
 
+  // ✅ CARGAR RANKING
   const loadParticipants = async () => {
     const data = await getDocs(collection(db, "predictions"));
-    setParticipants(data.docs.map(doc => doc.data()));
+    setParticipants(data.docs.map((doc) => doc.data()));
   };
 
   useEffect(() => {
     loadParticipants();
   }, []);
 
+  // ✅ FILTRO POR GRUPO
+  const filteredMatches = matches.filter(
+    (m) => m.group === groupFilter
+  );
+
   return (
     <div style={container}>
-      
-    <h1 style={{textAlign: "center", marginBottom: "25px", color: "#1f2937", fontSize: "40px", fontWeight: "bold"
-}}>
-  Chicken Mundialista 2026
-</h1>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
+        <h1 style={{
+          textAlign: "center",
+          marginBottom: "20px"
+        }}>
+          🏆 Quiniela Mundial
+        </h1>
 
-      {/* FORM */}
-      <div style={card}>
-        <div style={grid3}>
-          <input style={input} placeholder="Nombre" value={name} onChange={e => setName(e.target.value)} />
-          <input style={input} placeholder="Correo" value={email} onChange={e => setEmail(e.target.value)} />
-          <input style={input} placeholder="Apuesta" value={bet} onChange={e => setBet(e.target.value)} />
+        {/* FORM */}
+        <div style={card}>
+          <div style={grid3}>
+            <input style={input} placeholder="Nombre" value={name} onChange={e => setName(e.target.value)} />
+            <input style={input} placeholder="Correo" value={email} onChange={e => setEmail(e.target.value)} />
+            <input style={input} placeholder="Apuesta" value={bet} onChange={e => setBet(e.target.value)} />
+          </div>
         </div>
-      </div>
 
-      {/* MATCHES */}
-      <div style={card}>
-        <h3>Pronósticos</h3>
+        {/* PRONÓSTICOS */}
+        <div style={card}>
+          <h3>Pronósticos</h3>
 
-        <div style={gridMatches}>
-          {matches.map((m) => (
-            <div key={m.id} style={matchCard}>
+          {/* ✅ TABS */}
+          <div style={{
+            display: "flex",
+            gap: "8px",
+            marginBottom: "15px",
+            flexWrap: "wrap"
+          }}>
+            {["A","B","C","D","E","F","G","H","I","J","K","L"].map((g) => (
+              <button
+                key={g}
+                onClick={() => setGroupFilter(g)}
+                style={{
+                  padding: "8px 12px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc",
+                  background: groupFilter === g ? "#2b7cff" : "#fff",
+                  color: groupFilter === g ? "#fff" : "#000",
+                  cursor: "pointer"
+                }}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
 
-              <small style={{ color: "#6b7280", display: "block" }}>
-                            Grupo {m.group} · {m.date}
-            </small>
+          {/* MATCHES */}
+          <div style={gridMatches}>
+            {filteredMatches.map((m) => (
+              <div key={m.id} style={matchCard}>
+                <small>Grupo {m.group} · {m.date}</small>
+                <strong>{m.a} vs {m.b}</strong>
+                <small>{m.stadium}</small>
 
-            <strong style={{
-              color: "#111827",
-              display: "block",
-              margin: "6px 0",
-              fontSize: "14px"
-            }}>
-              {m.a} vs {m.b}
-            </strong>
+                <div style={scoreContainer}>
+                  <input
+                    style={scoreInput}
+                    type="number"
+                    value={predictions[m.id]?.a || ""}
+                    onChange={(e) =>
+                      handleChange(m.id, "a", e.target.value === "" ? "" : Number(e.target.value))
+                    }
+                  />
 
-            <small style={{
-              color: "#9ca3af",
-              display: "block",
-              fontSize: "12px"
-            }}>
-              {m.stadium}
-            </small>
+                  -
 
-
-              <div style={scoreContainer}>
-                <input
-                  style={scoreInput}
-                  type="number"
-                  value={predictions[m.id]?.a || ""}
-                  onChange={(e) =>
-                    handleChange(m.id, "a", e.target.value === "" ? "" : Number(e.target.value))
-                  }
-                />
-
-                -
-
-                <input
-                  style={scoreInput}
-                  type="number"
-                  value={predictions[m.id]?.b || ""}
-                  onChange={(e) =>
-                    handleChange(m.id, "b", e.target.value === "" ? "" : Number(e.target.value))
-                  }
-                />
+                  <input
+                    style={scoreInput}
+                    type="number"
+                    value={predictions[m.id]?.b || ""}
+                    onChange={(e) =>
+                      handleChange(m.id, "b", e.target.value === "" ? "" : Number(e.target.value))
+                    }
+                  />
+                </div>
               </div>
+            ))}
+          </div>
 
-            </div>
-          ))}
+          <br />
+
+          <div style={{ textAlign: "center" }}>
+            <button style={button} onClick={handleSave}>
+              Guardar Pronóstico
+            </button>
+          </div>
         </div>
 
-        <br />
+        {/* RANKING */}
+        <div style={card}>
+          <h3>🏆 Ranking</h3>
 
-        <div style={{ textAlign: "center" }}>
-          <button style={button} onClick={handleSave}>
-            Guardar Pronóstico
-          </button>
+          <table style={{ width: "100%" }}>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Jugador</th>
+                <th>Total</th>
+                <th>Exactos</th>
+                <th>Ganador</th>
+              </tr>
+            </thead>
+            <tbody>
+              {participants
+                .sort((a, b) => b.score - a.score)
+                .map((p, i) => (
+                  <tr key={i}>
+                    <td>
+                      {i === 0 && "🥇"}
+                      {i === 1 && "🥈"}
+                      {i === 2 && "🥉"}
+                      {i > 2 && i + 1}
+                    </td>
+                    <td>{p.name}</td>
+                    <td>{p.score}</td>
+                    <td>{p.exact}</td>
+                    <td>{p.winner}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
-      </div>
 
-      {/* RANKING */}
-      <div style={card}>
-        <h3>🏆 Ranking</h3>
-
-        <table style={{ width: "100%", marginTop: "10px" }}>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Jugador</th>
-              <th>Total</th>
-              <th>Exactos</th>
-              <th>Ganador</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {participants
-              .sort((a, b) => b.score - a.score)
-              .map((p, i) => (
-                <tr key={i}>
-                  <td>
-                    {i === 0 && "🥇"}
-                    {i === 1 && "🥈"}
-                    {i === 2 && "🥉"}
-                    {i > 3 && i + 1}
-                  </td>
-                  <td>{p.name}</td>
-                  <td>{p.score}</td>
-                  <td>{p.exact}</td>
-                  <td>{p.winner}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
       </div>
     </div>
   );
