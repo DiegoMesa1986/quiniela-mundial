@@ -41,12 +41,15 @@ export const grid3 = {
   marginTop: "10px"
 };
 
+
 export const gridMatches = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-  gap: "25px",   
-  marginTop: "15px"
+  gap: "20px",
+  marginTop: "15px",
+  width: "100%"
 };
+
 ``
 
 export const matchCard = {

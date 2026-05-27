@@ -260,36 +260,47 @@ function App() {
 
           {/* MATCHES */}
           <div style={gridMatches}>
-            {filteredMatches.map((m) => (
-              <div key={m.id} style={matchCard}>
-                <small>Grupo {m.group} · {m.date}</small>
-                <strong>{m.a} vs {m.b}</strong>
-                <small>{m.stadium}</small>
+          {filteredMatches.map((m) => (
+            <div key={m.id} style={matchCard}>
 
-                <div style={scoreContainer}>
-                  <input
-                    style={scoreInput}
-                    type="number"
-                    value={predictions[m.id]?.a || ""}
-                    onChange={(e) =>
-                      handleChange(m.id, "a", e.target.value === "" ? "" : Number(e.target.value))
-                    }
-                  />
-
-                  -
-
-                  <input
-                    style={scoreInput}
-                    type="number"
-                    value={predictions[m.id]?.b || ""}
-                    onChange={(e) =>
-                      handleChange(m.id, "b", e.target.value === "" ? "" : Number(e.target.value))
-                    }
-                  />
-                </div>
+              <div style={{ fontSize: "12px", color: "#6b7280" }}>
+                Grupo {m.group} · {m.date}
               </div>
-            ))}
-          </div>
+
+              <strong style={{ margin: "6px 0" }}>
+                {m.a} vs {m.b}
+              </strong>
+
+              <div style={{ fontSize: "12px", color: "#9ca3af" }}>
+                {m.stadium}
+              </div>
+
+              <div style={scoreContainer}>
+                <input
+                  style={scoreInput}
+                  type="number"
+                  value={predictions[m.id]?.a || ""}
+                  onChange={(e) =>
+                    handleChange(m.id, "a", e.target.value === "" ? "" : Number(e.target.value))
+                  }
+                />
+
+                -
+
+                <input
+                  style={scoreInput}
+                  type="number"
+                  value={predictions[m.id]?.b || ""}
+                  onChange={(e) =>
+                    handleChange(m.id, "b", e.target.value === "" ? "" : Number(e.target.value))
+                  }
+                />
+              </div>
+
+            </div>
+          ))}
+        </div>
+
 
           <br />
 
