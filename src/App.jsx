@@ -208,9 +208,13 @@ function App() {
 
         <h1 style={{
           textAlign: "center",
-          marginBottom: "20px"
+          marginBottom: "25px",
+          color: "#1f2937",        // ✅ texto oscuro (visible)
+          fontSize: "30px",
+          fontWeight: "bold",
+          letterSpacing: "0.5px"
         }}>
-          🏆 Quiniela Mundial
+          🏆 Polla Mundial 2026
         </h1>
 
         {/* FORM */}
