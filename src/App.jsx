@@ -253,7 +253,7 @@ function App() {
                   cursor: "pointer"
                 }}
               >
-                {g}
+                Grupo {g}
               </button>
             ))}
           </div>
