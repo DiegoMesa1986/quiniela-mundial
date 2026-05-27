@@ -242,7 +242,7 @@ function App() {
 
             {["Grupo A","Grupo B","Grupo C","Grupo D","Grupo E","Grupo F","Grupo G","Grupo H","Grupo I","Grupo J","Grupo K","Grupo L"].map((g) => (
               <button
-                key={`grupo-${g}`}
+                key={g}
                 onClick={() => setGroupFilter(g)}
                 style={{
                   padding: "8px 12px",
