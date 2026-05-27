@@ -228,11 +228,14 @@ function App() {
 
           {/* ✅ TABS */}
           <div style={{
-            display: "flex",
-            gap: "8px",
-            marginBottom: "15px",
-            flexWrap: "wrap"
-          }}>
+            display: "grid",
+            gridTemplateColumns: "repeat(6, 1fr)", // 🔥 6 por fila
+            gap: "10px",
+            marginBottom: "20px",
+            width: "100%"
+            }}>
+
+
             {["A","B","C","D","E","F","G","H","I","J","K","L"].map((g) => (
               <button
                 key={g}
