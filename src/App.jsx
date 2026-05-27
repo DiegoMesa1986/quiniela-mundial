@@ -209,12 +209,12 @@ function App() {
         <h1 style={{
           textAlign: "center",
           marginBottom: "25px",
-          color: "#1f2937",        // ✅ texto oscuro (visible)
+          color: "#06080a",        
           fontSize: "30px",
           fontWeight: "bold",
           letterSpacing: "0.5px"
         }}>
-          🏆 Polla Mundial 2026
+          🏆 Chicken Mundialista 2026
         </h1>
 
         {/* FORM */}
@@ -242,7 +242,7 @@ function App() {
 
             {["Grupo A","Grupo B","Grupo C","Grupo D","Grupo E","Grupo F","Grupo G","Grupo H","Grupo I","Grupo J","Grupo K","Grupo L"].map((g) => (
               <button
-                key={g}
+                key={`grupo-${g}`}
                 onClick={() => setGroupFilter(g)}
                 style={{
                   padding: "8px 12px",
