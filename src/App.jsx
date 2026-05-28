@@ -329,7 +329,7 @@ function App() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Jugador</th>
+                <th>Participante</th>
                 <th>Total</th>
                 <th>Exactos</th>
                 <th>Ganador</th>
