@@ -225,7 +225,7 @@ function App() {
           <div style={grid3}>
             <input style={input} placeholder="Nombre" value={name} onChange={e => setName(e.target.value)} />
             <input style={input} placeholder="Correo" value={email} onChange={e => setEmail(e.target.value)} />
-            <input style={input} placeholder="Apuesta" value={bet} onChange={e => setBet(e.target.value)} />
+            <input style={input} placeholder="Apuesta propuesta" value={bet} onChange={e => setBet(e.target.value)} />
           </div>
         </div>
 
