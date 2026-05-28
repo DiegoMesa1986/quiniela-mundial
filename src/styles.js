@@ -6,10 +6,10 @@ export const container = {
 
 export const card = {
   background: "#ffffff",
-  padding: "25px 20px",
+  padding: "25px",
   borderRadius: "16px",
   marginBottom: "25px",
-  boxShadow: "0 10px 25px rgba(0,0,0,0.08)"
+  boxShadow: "0 8px 25px rgba(0,0,0,0)"
 };
 
 export const input = {
@@ -19,7 +19,8 @@ export const input = {
   background: "#fff",
   color: "#000",
   width: "100%",
-  fontSize: "14px"
+  fontSize: "14px",
+  boxSizing: "border-box"   
 };
 
 export const button = {
@@ -37,7 +38,7 @@ export const grid3 = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
   gap: "15px",
-  marginTop: "15px"
+  width: "100%"
 };
 
 export const gridMatches = {

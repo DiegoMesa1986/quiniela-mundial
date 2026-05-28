@@ -204,7 +204,7 @@ function App() {
 
   return (
     <div style={container}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 15px" }}>
 
         <h1 style={{
           textAlign: "center",
