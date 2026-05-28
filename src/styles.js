@@ -6,21 +6,20 @@ export const container = {
 
 export const card = {
   background: "#ffffff",
-  padding: "25px",
+  padding: "25px 20px",
   borderRadius: "16px",
   marginBottom: "25px",
-  boxShadow: "0 10px 10px rgba(0,0,0,0.08)"
+  boxShadow: "0 10px 25px rgba(0,0,0,0.08)"
 };
 
 export const input = {
-  padding: "14px",
+  padding: "12px",
   borderRadius: "10px",
-  border: "1px solid #d1d5db",
-  backgroundColor: "#ffffff",
-  color: "#111827",
-  fontSize: "14px",
+  border: "1px solid #ddd",
+  background: "#fff",
+  color: "#000",
   width: "100%",
-  boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+  fontSize: "14px"
 };
 
 export const button = {
@@ -36,27 +35,27 @@ export const button = {
 
 export const grid3 = {
   display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr",
-  gap: "50px",              
-  marginTop: "10px"
+  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+  gap: "15px",
+  marginTop: "15px"
 };
-
 
 export const gridMatches = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
   gap: "20px",
-  marginTop: "15px",
-  width: "100%"
+  marginTop: "20px"
 };
 
-``
 
 export const matchCard = {
-  background: "#fff",
-  padding: "12px",
-  borderRadius: "10px",
-  boxShadow: "0 6px 6px rgba(0,0,0,0.08)"
+  background: "#ffffff",
+  padding: "18px",
+  borderRadius: "14px",
+  boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "6px"
 };
 
 export const scoreContainer = {
