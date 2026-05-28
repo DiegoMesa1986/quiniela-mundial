@@ -236,39 +236,34 @@ function App() {
           {/* ✅ TABS */}
           
         <div style={{
-          display: "flex",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
           gap: "8px",
-          marginBottom: "15px",
+          marginBottom: "20px",
           borderBottom: "2px solid #e5e7eb",
-          overflowX: "auto"
+          overflowX: "auto",
+          width: "100%"
         }}>
            
           {["A","B","C","D","E","F","G","H","I","J","K","L"].map((g) => (
-            <button
-              key={g}
-              onClick={() => setGroupFilter(g)}
-                            onMouseEnter={(e) => {
-                if (groupFilter !== g) e.target.style.color = "#111";
-              }}
-              onMouseLeave={(e) => {
-                if (groupFilter !== g) e.target.style.color = "#6b7280";
-              }}
-              style={{
-                padding: "10px 16px",
-                border: "none",
-                borderBottom: groupFilter === g
-                  ? "3px solid #2563eb"
-                  : "3px solid transparent",
-                background: "transparent",
-                color: groupFilter === g ? "#2563eb" : "#6b7280",
-                fontWeight: groupFilter === g ? "bold" : "500",
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                transition: "0.2s"
-              }}
-            >
-                Grupo {g}
-            </button>
+          <button
+            key={g}
+            onClick={() => setGroupFilter(g)}
+            style={{
+              padding: "10px",
+              borderRadius: "8px",
+              border: "1px solid #ddd",
+              background: groupFilter === g ? "#2563eb" : "#f9fafb",
+              color: groupFilter === g ? "#fff" : "#111",
+              cursor: "pointer",
+              fontWeight: "600",
+              width: "100%",     // ✅ importante
+              fontSize: "13px"
+            }}
+          >
+            Grupo {g}
+          </button>
+
           ))}
 
           </div>
