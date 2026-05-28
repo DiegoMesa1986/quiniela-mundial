@@ -234,31 +234,43 @@ function App() {
           <h3>Pronósticos</h3>
 
           {/* ✅ TABS */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(6, 1fr)", // 🔥 6 por fila
-            gap: "10px",
-            marginBottom: "20px",
-            width: "100%"
-            }}>
-
-
-            {["A","B","C","D","E","F","G","H","I","J","K","L"].map((g) => (
-              <button
-                key={`Grupo${g}`}
-                onClick={() => setGroupFilter(g)}
-                style={{
-                  padding: "8px 12px",
-                  borderRadius: "8px",
-                  border: "1px solid #ccc",
-                  background: groupFilter === g ? "#2b7cff" : "#fff",
-                  color: groupFilter === g ? "#fff" : "#000",
-                  cursor: "pointer"
-                }}
-              >
+          
+        <div style={{
+          display: "flex",
+          gap: "8px",
+          marginBottom: "15px",
+          borderBottom: "2px solid #e5e7eb",
+          overflowX: "auto"
+        }}>
+           
+          {["A","B","C","D","E","F","G","H","I","J","K","L"].map((g) => (
+            <button
+              key={g}
+              onClick={() => setGroupFilter(g)}
+                            onMouseEnter={(e) => {
+                if (groupFilter !== g) e.target.style.color = "#111";
+              }}
+              onMouseLeave={(e) => {
+                if (groupFilter !== g) e.target.style.color = "#6b7280";
+              }}
+              style={{
+                padding: "10px 16px",
+                border: "none",
+                borderBottom: groupFilter === g
+                  ? "3px solid #2563eb"
+                  : "3px solid transparent",
+                background: "transparent",
+                color: groupFilter === g ? "#2563eb" : "#6b7280",
+                fontWeight: groupFilter === g ? "bold" : "500",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+                transition: "0.2s"
+              }}
+            >
                 Grupo {g}
-              </button>
-            ))}
+            </button>
+          ))}
+
           </div>
 
           {/* MATCHES */}
