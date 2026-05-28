@@ -219,6 +219,9 @@ function App() {
 
         {/* FORM */}
         <div style={card}>
+          <h3 style={{ marginBottom: "15px" }}>
+            Información del participante
+          </h3>
           <div style={grid3}>
             <input style={input} placeholder="Nombre" value={name} onChange={e => setName(e.target.value)} />
             <input style={input} placeholder="Correo" value={email} onChange={e => setEmail(e.target.value)} />
