@@ -373,7 +373,7 @@ function App() {
                   min="0"
                   max="15"
                   step="1"
-                  value={predictions[m.id]?.a || ""}
+                  value={predictions[m.id]?.a ?? ""}
                   onChange={(e) => handleChange(m.id, "a", e.target.value)}
                 />
 
@@ -385,7 +385,7 @@ function App() {
                   min="0"
                   max="15"
                   step="1"
-                  value={predictions[m.id]?.b || ""}
+                  value={predictions[m.id]?.b ?? ""}
                   onChange={(e) => handleChange(m.id, "b", e.target.value)}
                 />
               </div>
