@@ -15,7 +15,7 @@ import {
 
 // ✅ PARTIDOS (usa tus 72 aquí)
 const matches = [
-  { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Ciudad de México (Azteca)", "a": "México", "b": "Sudáfrica" },
+  { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Guadalajara", "a": "México", "b": "Sudáfrica" },
   { "id": 2, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Guadalajara (Akron)", "a": "Corea del Sur", "b": "República Checa" },
   { "id": 3, "group": "B", "date": "12 Jun 2026", "stadium": "Estadio Toronto (BMO Field)", "a": "Canadá", "b": "Bosnia y Herzegovina" },
   { "id": 4, "group": "D", "date": "12 Jun 2026", "stadium": "Estadio Los Ángeles (SoFi Stadium)", "a": "Estados Unidos", "b": "Paraguay" },
@@ -105,13 +105,25 @@ function App() {
   const [participants, setParticipants] = useState([]);
   const [groupFilter, setGroupFilter] = useState("A");
 
+  const normalizeScore = (value) => {
+    if (value === "") return "";
+
+    const numericValue = Number(value);
+
+    if (!Number.isFinite(numericValue)) return "";
+
+    return Math.min(15, Math.max(0, Math.trunc(numericValue)));
+  };
+
   // ✅ GUARDAR PREDICCIÓN 
   const handleChange = (matchId, team, value) => {
+    const normalizedValue = normalizeScore(value);
+
     setPredictions((prev) => ({
       ...prev,
       [matchId]: {
         ...(prev[matchId] || {}),
-        [team]: value
+        [team]: normalizedValue
       }
     }));
   };
@@ -289,10 +301,11 @@ function App() {
                 <input
                   style={scoreInput}
                   type="number"
+                  min="0"
+                  max="15"
+                  step="1"
                   value={predictions[m.id]?.a || ""}
-                  onChange={(e) =>
-                    handleChange(m.id, "a", e.target.value === "" ? "" : Number(e.target.value))
-                  }
+                  onChange={(e) => handleChange(m.id, "a", e.target.value)}
                 />
 
                 -
@@ -300,10 +313,11 @@ function App() {
                 <input
                   style={scoreInput}
                   type="number"
+                  min="0"
+                  max="15"
+                  step="1"
                   value={predictions[m.id]?.b || ""}
-                  onChange={(e) =>
-                    handleChange(m.id, "b", e.target.value === "" ? "" : Number(e.target.value))
-                  }
+                  onChange={(e) => handleChange(m.id, "b", e.target.value)}
                 />
               </div>
 
