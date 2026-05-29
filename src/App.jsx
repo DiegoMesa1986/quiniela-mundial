@@ -37,13 +37,13 @@ const matches = [
   { "id": 20, "group": "J", "date": "16 Jun 2026", "a": "Austria", "b": "Jordania" },
   { "id": 21, "group": "K", "date": "17 Jun 2026", "a": "Portugal", "b": "RD Congo" },
   { "id": 22, "group": "L", "date": "17 Jun 2026", "a": "Inglaterra", "b": "Croacia" },
-  { "id": 23, "group": "L", "date": "17 Jun 2026", "stadium": "Estadio Toronto (BMO Field)", "a": "Ghana", "b": "Panamá" },
-  { "id": 24, "group": "K", "date": "17 Jun 2026", "stadium": "Estadio Ciudad de México (Azteca)", "a": "Uzbekistán", "b": "Colombia" },
-  { "id": 25, "group": "A", "date": "18 Jun 2026", "stadium": "Estadio Atlanta (Mercedes-Benz)", "a": "República Checa", "b": "Sudáfrica" },
-  { "id": 26, "group": "B", "date": "18 Jun 2026", "stadium": "Estadio Los Ángeles (SoFi Stadium)", "a": "Suiza", "b": "Bosnia y Herzegovina" },
-  { "id": 27, "group": "B", "date": "18 Jun 2026", "stadium": "Estadio BC Place Vancouver", "a": "Canadá", "b": "Catar" },
-  { "id": 28, "group": "A", "date": "18 Jun 2026", "stadium": "Estadio Guadalajara (Akron)", "a": "México", "b": "Corea del Sur" },
-  { "id": 29, "group": "D", "date": "19 Jun 2026", "stadium": "Estadio de Seattle (Lumen Field)", "a": "Estados Unidos", "b": "Australia" },
+  { "id": 23, "group": "L", "date": "17 Jun 2026", "a": "Ghana", "b": "Panamá" },
+  { "id": 24, "group": "K", "date": "17 Jun 2026", "a": "Uzbekistán", "b": "Colombia" },
+  { "id": 25, "group": "A", "date": "18 Jun 2026", "a": "República Checa", "b": "Sudáfrica" },
+  { "id": 26, "group": "B", "date": "18 Jun 2026", "a": "Suiza", "b": "Bosnia y Herzegovina" },
+  { "id": 27, "group": "B", "date": "18 Jun 2026", "a": "Canadá", "b": "Catar" },
+  { "id": 28, "group": "A", "date": "18 Jun 2026", "a": "México", "b": "Corea del Sur" },
+  { "id": 29, "group": "D", "date": "19 Jun 2026", "a": "Estados Unidos", "b": "Australia" },
   { "id": 30, "group": "C", "date": "19 Jun 2026", "stadium": "Estadio Boston (Gillette Stadium)", "a": "Escocia", "b": "Marruecos" },
   { "id": 31, "group": "C", "date": "19 Jun 2026", "stadium": "Estadio Filadelfia", "a": "Brasil", "b": "Haití" },
   { "id": 32, "group": "D", "date": "19 Jun 2026", "stadium": "Estadio Bahía de San Francisco", "a": "Turquía", "b": "Paraguay" },
@@ -292,10 +292,6 @@ function App() {
               <strong style={{ margin: "6px 0" }}>
                 {m.a} vs {m.b}
               </strong>
-
-              <div style={{ fontSize: "12px", color: "#9ca3af" }}>
-                {m.stadium}
-              </div>
 
               <div style={scoreContainer}>
                 <input
