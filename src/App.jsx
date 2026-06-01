@@ -430,6 +430,7 @@ function App() {
                       {i > 2 && i + 1}
                     </td>
                     <td>{p.name}</td>
+                    <td>{p.bet}</td>
                     <td>{p.score}</td>
                     <td>{p.exact}</td>
                     <td>{p.winner}</td>
