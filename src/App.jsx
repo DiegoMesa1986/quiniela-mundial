@@ -413,7 +413,7 @@ function App() {
               <tr>
                 <th>#</th>
                 <th>Participante</th>
-                <th>Apuesta</th>
+                <th>Apuesta Propuesta</th>
                 <th>Total</th>
                 <th>Exactos</th>
                 <th>Ganador</th>
