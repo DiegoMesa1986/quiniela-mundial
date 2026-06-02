@@ -404,7 +404,8 @@ function App() {
           <li>Incorrecto: <strong>0 puntos</strong></li>
           </ul>
 
-          <p><strong>4. Cuando termine la etapa inicial, se continuará con cada fase.</strong></p>
+          <p><strong>4. la apuesta más repetida sera la que ganara.</strong></p>
+          <p><strong>5. Cuando termine la etapa inicial, se continuará con cada fase.</strong></p>
         </div>
           <h3 style={{ marginBottom: "15px" }}>
             Información del participante
