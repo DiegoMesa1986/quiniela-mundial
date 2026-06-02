@@ -493,6 +493,21 @@ function App() {
             justifyContent: "flex-end",
             marginBottom: "10px"
           }}>
+            <button
+              onClick={downloadMyPredictionExcel}
+              style={{
+                padding: "10px 16px",
+                borderRadius: "8px",
+                background: "#2563eb",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "bold",
+                marginTop: "10px"
+              }}
+            >
+              📥 Descargar mi pronóstico
+            </button>
           </div>
 
           <div style={{
