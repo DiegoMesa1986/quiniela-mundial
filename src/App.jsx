@@ -174,6 +174,12 @@ function App() {
   const [predictions, setPredictions] = useState({});
   const [participants, setParticipants] = useState([]);
   const [groupFilter, setGroupFilter] = useState("A");
+  const downloadParticipantExcel = (participant) => {
+    if (!participant.predictions) {
+      alert("Este participante no tiene datos");
+      return;
+    }}
+
 
   const normalizeScore = (value) => {
     if (value === "") return "";
@@ -512,6 +518,7 @@ function App() {
                 <th>Total</th>
                 <th>Exactos</th>
                 <th>Ganador</th>
+                <th>Descargar</th>
               </tr>
             </thead>
             <tbody>
@@ -537,6 +544,22 @@ function App() {
                     <td>{p.score}</td>
                     <td>{p.exact}</td>
                     <td>{p.winner}</td>
+                    <td>
+                      <button
+                        onClick={() => downloadParticipantExcel(p)}
+                        style={{
+                          padding: "6px 10px",
+                          borderRadius: "6px",
+                          background: "#2563eb",
+                          color: "#fff",
+                          border: "none",
+                          cursor: "pointer",
+                          fontSize: "12px"
+                        }}
+                      >
+                        📥
+                      </button>
+                    </td>
                   </tr>
                 ))}
             </tbody>
