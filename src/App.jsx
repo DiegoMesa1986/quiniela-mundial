@@ -382,6 +382,31 @@ function App() {
 
         {/* FORM */}
         <div style={card}>
+          {/* REGLAS */}
+        <div style={{
+            background: "#fff",
+            padding: "20px",
+            borderRadius: "12px",
+            marginBottom: "20px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+            }}>
+          <h3 style={{ marginBottom: "10px" }}>📋 Reglas</h3>
+
+          <p>1. Cada participante deberá poner su nombre en la hoja que escoja.</p>
+
+          <p>2. Escribe el marcador en cada selección.</p>
+
+          <p><strong>3. Sistema de puntos:</strong></p>
+          <ul style={{ marginLeft: "20px" }}>
+          <li>Resultado exacto: <strong>3 puntos</strong></li>
+          <li>Acierta ganador/empate: <strong>1 punto</strong></li>
+          <li>Incorrecto: <strong>0 puntos</strong></li>
+          </ul>
+
+          <p>4. No se permiten cambios después del inicio del torneo (11 de junio).</p>
+
+          <p>5. Cuando termine la etapa inicial, se continuará con cada fase.</p>
+        </div>
           <h3 style={{ marginBottom: "15px" }}>
             Información del participante
           </h3>
