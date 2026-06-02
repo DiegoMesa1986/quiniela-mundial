@@ -175,7 +175,7 @@ function App() {
   const [participants, setParticipants] = useState([]);
   const [groupFilter, setGroupFilter] = useState("A");
   const downloadParticipantExcel = (participant) => {
-        console.log(participant); // ✅ DEBUG
+        console.log(participant); 
 
         if (!participant.predictions) {
           alert("Este participante no tiene datos");
@@ -278,7 +278,7 @@ function App() {
             name,
             email,
             bet: Number(bet),
-            predictions,   // ✅ ESTO ES LO CLAVE
+            predictions, 
             score: scoreData.total,
             exact: scoreData.exact,
             winner: scoreData.winner
