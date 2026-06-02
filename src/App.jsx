@@ -175,10 +175,30 @@ function App() {
   const [participants, setParticipants] = useState([]);
   const [groupFilter, setGroupFilter] = useState("A");
   const downloadParticipantExcel = (participant) => {
-    if (!participant.predictions) {
-      alert("Este participante no tiene datos");
-      return;
-    }}
+        console.log(participant); // ✅ DEBUG
+
+        if (!participant.predictions) {
+          alert("Este participante no tiene datos");
+          return;
+        }
+
+        const data = matches.map((m) => ({
+          Partido: m.id,
+          Grupo: m.group,
+          Equipo_1: m.a,
+          Goles_1: participant.predictions[m.id]?.a ?? "",
+          Equipo_2: m.b,
+          Goles_2: participant.predictions[m.id]?.b ?? ""
+        }));
+
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
+
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Pronostico");
+
+        XLSX.writeFile(workbook, `Pronostico_${participant.name}.xlsx`);
+      };
+
 
 
   const normalizeScore = (value) => {
@@ -255,14 +275,15 @@ function App() {
     if (exists) return alert("Correo ya registrado");
 
     await addDoc(collection(db, "predictions"), {
-      name,
-      email,
-      bet: Number(bet),
-      predictions,
-      score: scoreData.total,
-      exact: scoreData.exact,
-      winner: scoreData.winner
-    });
+            name,
+            email,
+            bet: Number(bet),
+            predictions,   // ✅ ESTO ES LO CLAVE
+            score: scoreData.total,
+            exact: scoreData.exact,
+            winner: scoreData.winner
+          });
+
 
     alert("✅ Guardado!");
 
