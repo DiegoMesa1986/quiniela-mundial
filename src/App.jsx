@@ -393,9 +393,9 @@ function App() {
             }}>
           <h3 style={{ marginBottom: "10px" }}>📋 Reglas</h3>
 
-          <p>1. Cada participante deberá poner su nombre, correo y apuesta propuesta</p>
+          <p><strong>1. Cada participante deberá poner su nombre, correo y apuesta propuesta.</strong></p>
 
-          <p>2. Escribe el marcador en cada selección.</p>
+          <p><strong>2. Escribe el marcador en cada selección.</strong></p>
 
           <p><strong>3. Sistema de puntos:</strong></p>
           <ul style={{ marginLeft: "20px" }}>
@@ -404,7 +404,7 @@ function App() {
           <li>Incorrecto: <strong>0 puntos</strong></li>
           </ul>
 
-          <p>5. Cuando termine la etapa inicial, se continuará con cada fase.</p>
+          <p><strong>5. Cuando termine la etapa inicial, se continuará con cada fase.</strong></p>
         </div>
           <h3 style={{ marginBottom: "15px" }}>
             Información del participante
