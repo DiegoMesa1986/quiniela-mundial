@@ -438,19 +438,21 @@ function App() {
             marginBottom: "10px"
           }}>
             <button
-              onClick={downloadRankingExcel}
+              onClick={downloadMyPredictionExcel}
               style={{
-                padding: "8px 12px",
+                padding: "10px 16px",
                 borderRadius: "8px",
-                background: "#16a34a",
+                background: "#2563eb",
                 color: "#fff",
                 border: "none",
                 cursor: "pointer",
-                fontWeight: "bold"
+                fontWeight: "bold",
+                marginTop: "10px"
               }}
             >
-              📥 Descargar ranking
+              📥 Descargar mi pronóstico
             </button>
+            ``
           </div>
 
           <div style={{
