@@ -267,6 +267,13 @@ function App() {
     }
     const scoreData = calculateScore(predictions);
 
+    const deadline = new Date("2026-06-11T00:00:00");
+
+if (new Date() > deadline) {
+  alert("Ya no se permiten cambios después del inicio del torneo");
+  return;
+}
+
     const snapshot = await getDocs(collection(db, "predictions"));
     const exists = snapshot.docs.some(
       (d) => d.data().email === email
