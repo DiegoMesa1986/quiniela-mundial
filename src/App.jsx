@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import * as XLSX from "xlsx";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 import {
@@ -238,6 +239,31 @@ function App() {
         return alert("Completa todos los partidos");
       }
     }
+  const downloadRankingExcel = () => {
+    if (!participants || participants.length === 0) {
+      alert("No hay datos para descargar");
+      return;
+    }
+
+    // ordenar por puntaje
+    const sorted = [...participants].sort((a, b) => b.score - a.score);
+
+    const data = sorted.map((p, index) => ({
+      Posicion: index + 1,
+      Nombre: p.name,
+      Correo: p.email,
+      Puntos: p.score,
+      Exactos: p.exact,
+      Ganador: p.winner
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Ranking");
+
+    XLSX.writeFile(workbook, "ranking_quiniela.xlsx");
+  };
 
     const scoreData = calculateScore(predictions);
 
@@ -290,7 +316,7 @@ function App() {
         <h1 style={{
           textAlign: "center",
           marginBottom: "25px",
-          color: "#06080a",        // ✅ texto oscuro (visible)
+          color: "#06080a",        
           fontSize: "30px",
           fontWeight: "bold",
           letterSpacing: "0.5px"
@@ -338,7 +364,7 @@ function App() {
               color: groupFilter === g ? "#fff" : "#111",
               cursor: "pointer",
               fontWeight: "600",
-              width: "100%",     // ✅ importante
+              width: "100%",   
               fontSize: "13px"
             }}
           >
@@ -348,7 +374,7 @@ function App() {
           ))}
 
           </div>
-
+          
           {/* MATCHES */}
           <div style={gridMatches}>
           {filteredMatches.map((m) => (
@@ -376,8 +402,6 @@ function App() {
                   value={predictions[m.id]?.a ?? ""}
                   onChange={(e) => handleChange(m.id, "a", e.target.value)}
                 />
-
-                -
 
                 <input
                   style={scoreInput}
@@ -408,6 +432,48 @@ function App() {
         <div style={card}>
           <h3>🏆 Ranking</h3>
 
+          <div style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: "10px"
+          }}>
+            <button
+              onClick={downloadRankingExcel}
+              style={{
+                padding: "8px 12px",
+                borderRadius: "8px",
+                background: "#16a34a",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "bold"
+              }}
+            >
+              📥 Descargar ranking
+            </button>
+          </div>
+
+          <div style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: "10px"
+          }}>
+            <button
+              onClick={downloadRankingExcel}
+              style={{
+                padding: "8px 14px",
+                borderRadius: "8px",
+                background: "#16a34a",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "bold"
+              }}
+            >
+              📥 Descargar ranking
+            </button>
+          </div>
+          ``
           <table style={{ width: "100%" }}>
             <thead>
               <tr>
