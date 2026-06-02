@@ -381,32 +381,40 @@ function App() {
         </h1>
 
         {/* FORM */}
-        <div style={card}>
-          <h3 style={{ marginBottom: "15px" }}>
-            Información del participante
-          </h3>
-          <div style={grid3}>
-            <input style={input} placeholder="Nombre" value={name} onChange={e => setName(e.target.value)} />
-            <input style={input} placeholder="Correo" value={email} onChange={e => setEmail(e.target.value)} />
-            <input style={input} placeholder="Apuesta propuesta" value={bet} onChange={e => setBet(e.target.value)} />
+          {/*
+          <div style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: "10px"
+          }}>
+            <button
+              onClick={downloadRankingExcel}
+              style={{
+                padding: "8px 14px",
+                borderRadius: "8px",
+                background: "#16a34a",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "bold"
+              }}
+            >
+              📥 Descargar ranking
+            </button>
           </div>
-        </div>
+          */}
 
-        {/* PRONÓSTICOS */}
-        <div style={card}>
-          <h3>Pronósticos</h3>
-
-          {/* ✅ TABS */}
-          
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
-          gap: "8px",
-          marginBottom: "20px",
-          borderBottom: "2px solid #e5e7eb",
-          overflowX: "auto",
-          width: "100%"
-        }}>
+          <div style={card}>
+            <h3>Pronósticos</h3>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+              gap: "8px",
+              marginBottom: "20px",
+              borderBottom: "2px solid #e5e7eb",
+              overflowX: "auto",
+              width: "100%"
+            }}>
            
           {["A","B","C","D","E","F","G","H","I","J","K","L"].map((g) => (
           <button
@@ -510,26 +518,7 @@ function App() {
             </button>
           </div>
 
-          <div style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginBottom: "10px"
-          }}>
-            <button
-              onClick={downloadRankingExcel}
-              style={{
-                padding: "8px 14px",
-                borderRadius: "8px",
-                background: "#16a34a",
-                color: "#fff",
-                border: "none",
-                cursor: "pointer",
-                fontWeight: "bold"
-              }}
-            >
-              📥 Descargar ranking
-            </button>
-          </div>
+          {/* botón de descargar ranking comentado */}
           <table style={{ width: "100%" }}>
             <thead>
               <tr>
