@@ -388,6 +388,7 @@ function App() {
             padding: "20px",
             borderRadius: "12px",
             marginBottom: "20px",
+            textAlign: "left",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
             }}>
           <h3 style={{ marginBottom: "10px" }}>📋 Reglas</h3>
