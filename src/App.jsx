@@ -239,32 +239,6 @@ function App() {
         return alert("Completa todos los partidos");
       }
     }
-  const downloadRankingExcel = () => {
-    if (!participants || participants.length === 0) {
-      alert("No hay datos para descargar");
-      return;
-    }
-
-    // ordenar por puntaje
-    const sorted = [...participants].sort((a, b) => b.score - a.score);
-
-    const data = sorted.map((p, index) => ({
-      Posicion: index + 1,
-      Nombre: p.name,
-      Correo: p.email,
-      Puntos: p.score,
-      Exactos: p.exact,
-      Ganador: p.winner
-    }));
-
-    const worksheet = XLSX.utils.json_to_sheet(data);
-    const workbook = XLSX.utils.book_new();
-
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Ranking");
-
-    XLSX.writeFile(workbook, "ranking_quiniela.xlsx");
-  };
-
     const scoreData = calculateScore(predictions);
 
     const snapshot = await getDocs(collection(db, "predictions"));
@@ -292,6 +266,61 @@ function App() {
     setPredictions({});
 
     loadParticipants();
+  };
+
+  // Descargar ranking completo a Excel
+  const downloadRankingExcel = () => {
+    if (!participants || participants.length === 0) {
+      alert("No hay datos para descargar");
+      return;
+    }
+
+    const sorted = [...participants].sort((a, b) => b.score - a.score);
+
+    const data = sorted.map((p, index) => ({
+      Posicion: index + 1,
+      Nombre: p.name,
+      Correo: p.email,
+      Puntos: p.score,
+      Exactos: p.exact,
+      Ganador: p.winner
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Ranking");
+
+    XLSX.writeFile(workbook, "ranking_quiniela.xlsx");
+  };
+
+  // Descargar mi pronóstico (según el correo actual)
+  const downloadMyPredictionExcel = () => {
+    if (!email) return alert("Ingresa tu correo para descargar tu pronóstico");
+
+    const participant = participants.find((p) => p.email === email);
+    if (!participant) return alert("No se encontró el pronóstico para este correo");
+
+    const preds = participant.predictions || {};
+    const data = Object.keys(preds).map((id) => {
+      const m = matches.find((mm) => String(mm.id) === String(id));
+      const p = preds[id] || {};
+      return {
+        Id: id,
+        Partido: m ? `${m.a} vs ${m.b}` : "",
+        EquipoA: m?.a || "",
+        EquipoB: m?.b || "",
+        PredA: p.a ?? "",
+        PredB: p.b ?? "",
+      };
+    });
+
+    if (data.length === 0) return alert("No hay pronósticos para descargar");
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "MiPronostico");
+    XLSX.writeFile(workbook, `pronostico_${participant.name || 'usuario'}.xlsx`);
   };
 
   // ✅ CARGAR RANKING
@@ -398,7 +427,7 @@ function App() {
                   type="number"
                   min="0"
                   max="15"
-                  step="0"
+                  step="1"
                   value={predictions[m.id]?.a ?? ""}
                   onChange={(e) => handleChange(m.id, "a", e.target.value)}
                 />
@@ -408,7 +437,7 @@ function App() {
                   type="number"
                   min="0"
                   max="15"
-                  step="0"
+                  step="1"
                   value={predictions[m.id]?.b ?? ""}
                   onChange={(e) => handleChange(m.id, "b", e.target.value)}
                 />
@@ -452,7 +481,6 @@ function App() {
             >
               📥 Descargar mi pronóstico
             </button>
-            ``
           </div>
 
           <div style={{
@@ -475,7 +503,6 @@ function App() {
               📥 Descargar ranking
             </button>
           </div>
-          ``
           <table style={{ width: "100%" }}>
             <thead>
               <tr>
@@ -488,7 +515,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {participants
+              {[...participants]
                 .sort((a, b) => b.score - a.score)
                 .map((p, i) => (
                   <tr key={i}>
