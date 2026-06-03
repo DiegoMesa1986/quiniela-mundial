@@ -422,6 +422,21 @@ if (new Date() > deadline) {
             <input style={input} placeholder="Correo" value={email} onChange={e => setEmail(e.target.value)} />
             <input style={input} placeholder="Apuesta propuesta" value={bet} onChange={e => setBet(e.target.value)} />
           </div>
+                      <button
+              onClick={downloadMyPredictionExcel}
+              style={{
+                padding: "10px 16px",
+                borderRadius: "8px",
+                background: "#2563eb",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "bold",
+                marginTop: "10px"
+              }}
+            >
+              📥 Descargar mi pronóstico
+            </button>
         </div>
 
         {/* PRONÓSTICOS */}
@@ -525,21 +540,6 @@ if (new Date() > deadline) {
             justifyContent: "flex-end",
             marginBottom: "10px"
           }}>
-            <button
-              onClick={downloadMyPredictionExcel}
-              style={{
-                padding: "10px 16px",
-                borderRadius: "8px",
-                background: "#2563eb",
-                color: "#fff",
-                border: "none",
-                cursor: "pointer",
-                fontWeight: "bold",
-                marginTop: "10px"
-              }}
-            >
-              📥 Descargar mi pronóstico
-            </button>
           </div>
 
           <div style={{
