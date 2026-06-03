@@ -400,9 +400,9 @@ if (new Date() > deadline) {
             }}>
           <h3 style={{ marginBottom: "10px" }}>📋 Reglas</h3>
 
-          <p><strong>1. Registro: Cada participante deberá registrar su nombre, correo electrónico y su apuesta propuesta.</strong></p>
+          <p><strong>1. Registro:</strong> Cada participante deberá registrar su nombre, correo electrónico y su apuesta propuesta.</p>
 
-          <p><strong>2. Pronósticos: Se debe ingresar el marcador exacto para cada selección.</strong></p>
+          <p><strong>2. Pronósticos:</strong> Se debe ingresar el marcador exacto para cada selección.</p>
 
           <p><strong>3. Sistema de Puntuación:</strong></p>
           <ul style={{ marginLeft: "20px" }}>
@@ -411,8 +411,8 @@ if (new Date() > deadline) {
           <li>Incorrecto: <strong>0 puntos</strong></li>
           </ul>
 
-          <p><strong>4. Apuesta Oficial: Antes del inicio del primer partido de cada fase, se determinará y publicará la "Apuesta Oficial", la cual corresponderá al marcador más repetido entre todas las propuestas enviadas por los participantes.</strong></p>
-          <p><strong>5. Continuidad: Al finalizar la etapa inicial, el juego continuará bajo esta misma dinámica para cada fase eliminatoria.</strong></p>
+          <p><strong>4. Apuesta Oficial:</strong> Antes del inicio del primer partido de cada fase, se determinará y publicará la "Apuesta Oficial", la cual corresponderá al marcador más repetido entre todas las propuestas enviadas por los participantes.</p>
+          <p><strong>5. Continuidad:</strong> Al finalizar la etapa inicial, el juego continuará bajo esta misma dinámica para cada fase eliminatoria.</p>
         </div>
           <h3 style={{ marginBottom: "15px" }}>
             Información del participante
