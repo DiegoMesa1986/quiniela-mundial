@@ -93,7 +93,7 @@ const matches = [
 
 // ✅ RESULTADOS REALES
 const results = {
-  1: { a: 2, b: 1 },
+  //1: { a: 2, b: 1 },
   // 2: { a: 0, b: 0 },
   // 3: { a: 0, b: 0 },
   // 4: { a: 0, b: 0 },
