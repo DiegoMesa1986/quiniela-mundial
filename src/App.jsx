@@ -561,8 +561,18 @@ if (new Date() > deadline) {
             </thead>
             <tbody>
               {[...participants]
-                .sort((a, b) => b.score - a.score)
-                .map((p, i) => (
+                  .map((p) => {
+                    const scoreData = calculateScore(p.predictions);
+
+                    return {
+                      ...p,
+                      score: scoreData.total,
+                      exact: scoreData.exact,
+                      winner: scoreData.winner
+                    };
+                  })
+                  .sort((a, b) => b.score - a.score)
+                  .map((p, i) => (
                   <tr key={i}>
                     <td>
                       {i === 0 && "🥇"}
