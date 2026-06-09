@@ -93,7 +93,7 @@ const matches = [
 
 // ✅ RESULTADOS REALES
 const results = {
-  //1: { a: 2, b: 1 },
+  // 1: { a: 2, b: 1 },
   // 2: { a: 0, b: 0 },
   // 3: { a: 0, b: 0 },
   // 4: { a: 0, b: 0 },
@@ -363,6 +363,32 @@ if (new Date() > deadline) {
     setParticipants(data.docs.map((doc) => doc.data()));
   };
 
+  useEffect(() => {
+    const data = {
+      name,
+      email,
+      bet,
+      predictions
+    };
+
+    localStorage.setItem(
+      "quiniela_mundial_2026",
+      JSON.stringify(data)
+    );
+  }, [name, email, bet, predictions]);
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("quiniela_mundial_2026");
+
+    if (savedData) {
+      const data = JSON.parse(savedData);
+
+      setName(data.name || "");
+      setEmail(data.email || "");
+      setBet(data.bet || "");
+      setPredictions(data.predictions || {});
+    }
+  }, []);
   useEffect(() => {
     loadParticipants();
   }, []);
