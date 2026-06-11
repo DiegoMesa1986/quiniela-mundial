@@ -583,7 +583,7 @@ if (new Date() > deadline) {
           </div>
           
           {/* MATCHES */}
-          <div style={gridMatches}>
+{/*           <div style={gridMatches}>
           {filteredMatches.map((m) => (
             <div key={m.id} style={matchCard}>
 
@@ -623,7 +623,7 @@ if (new Date() > deadline) {
 
             </div>
           ))}
-        </div>
+        </div> */}
 
 
           <br />
