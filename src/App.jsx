@@ -549,7 +549,7 @@ if (new Date() > deadline) {
 
           {/* ✅ TABS */}
           
-{/*         <div style={{
+         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
           gap: "8px",
@@ -580,10 +580,10 @@ if (new Date() > deadline) {
 
           ))}
 
-          </div> */}
+          </div> 
           
           {/* MATCHES */}
-{/*           <div style={gridMatches}>
+          {/* <div style={gridMatches}>
           {filteredMatches.map((m) => (
             <div key={m.id} style={matchCard}>
 
@@ -623,7 +623,7 @@ if (new Date() > deadline) {
 
             </div>
           ))}
-        </div> */}
+        </div> 
 
 
           <br />
@@ -632,7 +632,7 @@ if (new Date() > deadline) {
             <button style={button} onClick={handleSave}>
               Guardar Pronóstico
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* RANKING */}
