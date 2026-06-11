@@ -411,7 +411,7 @@ if (new Date() > deadline) {
 
     const preds = participant.predictions || {};
     const data = Object.keys(preds).map((id) => {
-      const m = resultteams.find((mm) => String(mm.id) === String(id));
+      const m = matches.find((mm) => String(mm.id) === String(id));
       const p = preds[id] || {};
       return {
         Id: id,
@@ -657,9 +657,6 @@ if (new Date() > deadline) {
           ))}
         </div> 
 
-
-          <br />
-
          <div style={{ textAlign: "center" }}>
             <button style={button} onClick={handleSave}>
               Guardar Pronóstico
@@ -716,7 +713,7 @@ if (new Date() > deadline) {
                       {i > 2 && i + 1}
                     </td>
                     <td>{p.name}</td>
-{/*                     <td>
+{/*                    <td>
                       {new Intl.NumberFormat('es-CO', {
                        style: 'currency',
                        currency: 'COP',
