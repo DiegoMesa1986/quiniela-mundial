@@ -684,14 +684,14 @@ if (new Date() > deadline) {
                       {i > 2 && i + 1}
                     </td>
                     <td>{p.name}</td>
-                    <td>
+{/*                     <td>
                       {new Intl.NumberFormat('es-CO', {
                        style: 'currency',
                        currency: 'COP',
                        minimumFractionDigits: 0,
                        maximumFractionDigits: 0,
                       }).format(p.bet)}
-                    </td>
+                    </td> */}
                     <td>{p.score}</td>
                     <td>{p.exact}</td>
                     <td>{p.winner}</td>
