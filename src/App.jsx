@@ -583,7 +583,7 @@ if (new Date() > deadline) {
           </div> 
           
           {/* MATCHES */}
-          {/* <div style={gridMatches}>
+          <div style={gridMatches}>
           {filteredMatches.map((m) => (
             <div key={m.id} style={matchCard}>
 
@@ -599,26 +599,43 @@ if (new Date() > deadline) {
                 {m.stadium}
               </div>
 
-              <div style={scoreContainer}>
-                <input
-                  style={scoreInput}
-                  type="number"
-                  min="0"
-                  max="15"
-                  step="1"
-                  value={predictions[m.id]?.a ?? ""}
-                  onChange={(e) => handleChange(m.id, "a", e.target.value)}
-                />
+                <div style={scoreContainer}>
+                <div style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "10px"
+                }}>
+                  <span style={{
+                    background: "#2563eb",
+                    color: "#fff",
+                    padding: "8px 14px",
+                    borderRadius: "8px",
+                    fontWeight: "bold",
+                    fontSize: "18px",
+                    minWidth: "40px",
+                    textAlign: "center"
+                  }}>
+                    {results[m.id]?.a ?? "-"}
+                  </span>
 
-                <input
-                  style={scoreInput}
-                  type="number"
-                  min="0"
-                  max="15"
-                  step="1"
-                  value={predictions[m.id]?.b ?? ""}
-                  onChange={(e) => handleChange(m.id, "b", e.target.value)}
-                />
+                  <span style={{ fontWeight: "bold", fontSize: "18px" }}>
+                    -
+                  </span>
+
+                  <span style={{
+                    background: "#2563eb",
+                    color: "#fff",
+                    padding: "8px 14px",
+                    borderRadius: "8px",
+                    fontWeight: "bold",
+                    fontSize: "18px",
+                    minWidth: "40px",
+                    textAlign: "center"
+                  }}>
+                    {results[m.id]?.b ?? "-"}
+                  </span>
+                </div>
               </div>
 
             </div>
@@ -632,7 +649,7 @@ if (new Date() > deadline) {
             <button style={button} onClick={handleSave}>
               Guardar Pronóstico
             </button>
-          </div> */}
+          </div> *
         </div>
 
         {/* RANKING */}
