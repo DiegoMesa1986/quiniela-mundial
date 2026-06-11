@@ -453,7 +453,7 @@ if (new Date() > deadline) {
 
     const preds = participant.predictions || {};
     const data = Object.keys(preds).map((id) => {
-      const m = resultteams.find((mm) => String(mm.id) === String(id));
+      const m = resultteams.find((mm) => Number(mm.id) === Number(id));
       const p = preds[id] || {};
       return {
         Id: id,
