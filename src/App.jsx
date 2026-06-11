@@ -16,7 +16,7 @@ import {
 
 // ✅ PARTIDOS
 const matches = [
-  /* { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Ciudad de México", "a": "México", "b": "Sudáfrica" },
+  { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Ciudad de México", "a": "México", "b": "Sudáfrica" },
   { "id": 2, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Guadalajara", "a": "Corea del Sur", "b": "República Checa" },
   { "id": 3, "group": "B", "date": "12 Jun 2026", "stadium": "Estadio Toronto", "a": "Canadá", "b": "Bosnia y Herzegovina" },
   { "id": 4, "group": "D", "date": "12 Jun 2026", "stadium": "Estadio Los Angeles", "a": "Estados Unidos", "b": "Paraguay" },
@@ -24,8 +24,8 @@ const matches = [
   { "id": 6, "group": "C", "date": "13 Jun 2026", "stadium": "Estadio Nueva York / Nueva Jersey", "a": "Brasil", "b": "Marruecos" },
   { "id": 7, "group": "C", "date": "13 Jun 2026", "stadium": "Estadio Boston", "a": "Haití", "b": "Escocia" },
   { "id": 8,("group": "D", "date": "13 Jun 2026", "stadium": "Estadio BC Place Vancouver", "a": "Australia",("b": "Turquía" },
-  {("id": 9,("group":("E",("date":("14 Jun 2026",("stadium"):("Estadio Houston"),("a"):("Alemania"),("b"):("Curazao") },
-  {("id"):10,("group"):("F"),("date"):("14 Jun 2026"),("stadium"):("Estadio Dallas"),("a"):("Países Bajos"),("b"):("Japón") },
+  { "id": 9,("group":("E",("date":("14 Jun 2026",("stadium"):("Estadio Houston"),("a"):("Alemania"),("b"):("Curazao") },
+  { "id"):10,("group"):("F"),("date"):("14 Jun 2026"),("stadium"):("Estadio Dallas"),("a"):("Países Bajos"),("b"):("Japón") },
   { "id": 11, "group": "E", "date": "14 Jun 2026", "stadium": "Estadio Filadelfia", "a": "Costa de Marfil", "b": "Ecuador" },
   { "id": 12, "group": "F", "date": "14 Jun 2026", "stadium": "Estadio Monterrey", "a": "Suecia", "b": "Túnez" },
   { "id": 13, "group": "H", "date": "15 Jun 2026", "stadium": "Estadio Atlanta", "a": "España", "b": "Cabo Verde" },
@@ -87,7 +87,7 @@ const matches = [
   { "id": 69, "group": "K", "date": "27 Jun 2026", "stadium": "Estadio Miami", "a": "Colombia", "b": "Portugal" },
   { "id": 70, "group": "K", "date": "27 Jun 2026", "stadium": "Estadio Atlanta", "a": "RD Congo", "b": "Uzbekistán" },
   { "id": 71, "group": "J", "date": "27 Jun 2026", "stadium": "Estadio Kansas City", "a": "Argelia", "b": "Austria" },
-  { "id": 72, "group": "J", "date": "27 Jun 2026", "stadium": "Estadio Dallas", "a": "Jordania", "b": "Argentina" }, */
+  { "id": 72, "group": "J", "date": "27 Jun 2026", "stadium": "Estadio Dallas", "a": "Jordania", "b": "Argentina" }, 
 ];
 
 // ✅ PARTIDOS resultados
