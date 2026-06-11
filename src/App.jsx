@@ -16,7 +16,7 @@ import {
 
 // ✅ PARTIDOS
 const matches = [
-  { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Ciudad de México - en vivo", "a": "México", "b": "Sudáfrica" },
+  { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Ciudad de México en vivo", "a": "México", "b": "Sudáfrica" },
   { "id": 2, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Guadalajara", "a": "Corea del Sur", "b": "República Checa" },
   { "id": 3, "group": "B", "date": "12 Jun 2026", "stadium": "Estadio Toronto", "a": "Canadá", "b": "Bosnia y Herzegovina" },
   { "id": 4, "group": "D", "date": "12 Jun 2026", "stadium": "Estadio Los Angeles", "a": "Estados Unidos", "b": "Paraguay" },
