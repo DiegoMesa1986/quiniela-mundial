@@ -456,10 +456,10 @@ if (new Date() > deadline) {
       const m = resultteams.find((mm) => Number(mm.id) === Number(id));
       const p = preds[id] || {};
       return {
-        Id: id,
-        Partido: m ? `${m.a} vs ${m.b}` : "",
-        EquipoA: m?.a || "",
-        EquipoB: m?.b || "",
+         Id: id,
+        Partido: m ? `${m.a} vs ${m.b}` : `Partido ${id}`,
+        EquipoA: m?.a || "Equipo A",
+        EquipoB: m?.b || "Equipo B",
         PredA: p.a ?? "",
         PredB: p.b ?? "",
       };
