@@ -441,7 +441,7 @@ if (new Date() > deadline) {
     const data = {
       name,
       email,
-      bet,
+      /* bet, */
       predictions
     };
 
@@ -459,7 +459,7 @@ if (new Date() > deadline) {
 
       setName(data.name || "");
       setEmail(data.email || "");
-      setBet(data.bet || "");
+      /* setBet(data.bet || ""); */
       setPredictions(data.predictions || {});
     }
   }, []);
