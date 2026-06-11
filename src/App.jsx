@@ -680,7 +680,12 @@ if (new Date() > deadline) {
                 </div>
               </div>
 
-              <div style={card}>
+            </div>
+
+            
+          ))}
+
+                        <div style={card}>
                 <h3>📊 Tabla de posiciones - Grupo {groupFilter}</h3>
 
                 <table style={{
@@ -718,11 +723,6 @@ if (new Date() > deadline) {
                 </table>
               </div>
               ``
-
-            </div>
-
-            
-          ))}
         </div> 
 
 
