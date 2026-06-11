@@ -249,34 +249,6 @@ function App() {
   const [participants, setParticipants] = useState([]);
   const [groupFilter, setGroupFilter] = useState("A");
   
-const downloadParticipantExcel = (participant) => {
-  if (!participant.predictions) {
-    alert("Este participante no tiene datos");
-    return;
-  }
-
-  const data = matches.map((m) => {
-    const p = participant.predictions[m.id] || {};
-
-    return {
-      Partido: m.id,
-      Grupo: m.group,
-      Equipo_1: m.a,
-      Goles_1: p.a ?? "",
-      Equipo_2: m.b,
-      Goles_2: p.b ?? ""
-    };
-  });
-
-  const worksheet = XLSX.utils.json_to_sheet(data);
-  const workbook = XLSX.utils.book_new();
-
-  XLSX.utils.book_append_sheet(workbook, worksheet, "Pronostico");
-
-  XLSX.writeFile(workbook, `Pronostico_${participant.name}.xlsx`);
-};
-
-  
       const calculateGroupTable = (group) => {
           const groupMatches = matches.filter((m) => m.group === group);
 
@@ -422,39 +394,6 @@ if (new Date() > deadline) {
     loadParticipants();
   };
 
-  // Descargar ranking completo a Excel
-  const downloadMyPredictionExcel = () => {
-  if (!email) return alert("Ingresa tu correo para descargar tu pronóstico");
-
-  const participant = participants.find((p) => p.email === email);
-
-  if (!participant) return alert("No se encontró el pronóstico para este correo");
-
-  const preds = participant.predictions || {};
-
-  const data = Object.keys(preds).map((id) => {
-    const m = matches.find((mm) => Number(mm.id) === Number(id));
-    const p = preds[id] || {};
-
-    return {
-      Id: id,
-      Partido: m ? `${m.a} vs ${m.b}` : `Partido ${id}`,
-      EquipoA: m?.a || "Equipo A",
-      EquipoB: m?.b || "Equipo B",
-      PredA: p.a ?? "",
-      PredB: p.b ?? "",
-    };
-  });
-
-  const worksheet = XLSX.utils.json_to_sheet(data);
-  const workbook = XLSX.utils.book_new();
-
-  XLSX.utils.book_append_sheet(workbook, worksheet, "MiPronostico");
-
-  XLSX.writeFile(workbook, `pronostico_${participant.name || "usuario"}.xlsx`);
-};
-
-
   // Descargar mi pronóstico (según el correo actual)
   const downloadMyPredictionExcel = () => {
     if (!email) return alert("Ingresa tu correo para descargar tu pronóstico");
@@ -466,13 +405,16 @@ if (new Date() > deadline) {
     const data = Object.keys(preds).map((id) => {
       const m = matches.find((mm) => Number(mm.id) === Number(id));
       const p = preds[id] || {};
+        const official = results[Number(id)];
       return {
-         Id: id,
+          Id: id,
         Partido: m ? `${m.a} vs ${m.b}` : `Partido ${id}`,
         EquipoA: m?.a || "Equipo A",
         EquipoB: m?.b || "Equipo B",
         PredA: p.a ?? "",
         PredB: p.b ?? "",
+          ResultadoA: official?.a ?? "",
+          ResultadoB: official?.b ?? "",
       };
     });
 
@@ -741,7 +683,6 @@ if (new Date() > deadline) {
                 </tbody>
               </table>
             </div>
-              ``
         </div> 
 
 
