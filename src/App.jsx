@@ -272,7 +272,49 @@ function App() {
 
         XLSX.writeFile(workbook, `Pronostico_${participant.name}.xlsx`);
       };
+  
+      const calculateGroupTable = (group) => {
+          const groupMatches = matches.filter((m) => m.group === group);
 
+          const teams = {};
+
+          groupMatches.forEach((m) => {
+            const r = results[m.id];
+            if (!r) return;
+
+            const { a, b } = r;
+
+            if (!teams[m.a]) teams[m.a] = { pts: 0, gf: 0, gc: 0 };
+            if (!teams[m.b]) teams[m.b] = { pts: 0, gf: 0, gc: 0 };
+
+            teams[m.a].gf += a;
+            teams[m.a].gc += b;
+
+            teams[m.b].gf += b;
+            teams[m.b].gc += a;
+
+            if (a > b) {
+              teams[m.a].pts += 3;
+            } else if (a < b) {
+              teams[m.b].pts += 3;
+            } else {
+              teams[m.a].pts += 1;
+              teams[m.b].pts += 1;
+            }
+          });
+
+          return Object.entries(teams)
+            .map(([team, data]) => ({
+              team,
+              pts: data.pts,
+              gf: data.gf,
+              gc: data.gc,
+              dg: data.gf - data.gc
+            }))
+            .sort((a, b) =>
+              b.pts - a.pts || b.dg - a.dg || b.gf - a.gf
+            );
+        };
 
 
   const normalizeScore = (value) => {
@@ -638,7 +680,48 @@ if (new Date() > deadline) {
                 </div>
               </div>
 
+              <div style={card}>
+                <h3>📊 Tabla de posiciones - Grupo {groupFilter}</h3>
+
+                <table style={{
+                  width: "100%",
+                  textAlign: "center",
+                  borderCollapse: "collapse",
+                  marginTop: "10px"
+                }}>
+                  <thead>
+                    <tr>
+                      <th>Equipo</th>
+                      <th>PTS</th>
+                      <th>GF</th>
+                      <th>GC</th>
+                      <th>DG</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {calculateGroupTable(groupFilter).map((t, i) => (
+                      <tr
+                        key={i}
+                        style={{
+                          background: i < 2 ? "#dcfce7" : "transparent"
+                        }}
+                      >
+                        <td style={{ fontWeight: "bold" }}>{t.team}</td>
+                        <td>{t.pts}</td>
+                        <td>{t.gf}</td>
+                        <td>{t.gc}</td>
+                        <td>{t.dg > 0 ? `+${t.dg}` : t.dg}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              ``
+
             </div>
+
+            
           ))}
         </div> 
 
