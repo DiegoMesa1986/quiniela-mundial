@@ -500,9 +500,9 @@ if (new Date() > deadline) {
             }}>
           <h3 style={{ marginBottom: "10px" }}>📋 Reglas</h3>
 
-          <p><strong>1. Registro:</strong> Cada participante deberá registrar su nombre, correo electrónico y su apuesta propuesta.</p>
+          <p><strong>1. Participantes Inscritos:</strong> El período de inscripción ha finalizado y los participantes registrados serán los únicos habilitados para competir durante la fase de grupos.</p>
 
-          <p><strong>2. Pronósticos:</strong> Se debe ingresar el marcador exacto para cada selección.</p>
+          <p><strong>2. Pronósticos:</strong> Cada participante registró previamente el marcador pronosticado para todos los partidos de la fase de grupos.</p>
 
           <p><strong>3. Sistema de Puntuación:</strong></p>
           <ul style={{ marginLeft: "20px" }}>
@@ -511,8 +511,12 @@ if (new Date() > deadline) {
           <li>Incorrecto: <strong>0 puntos</strong></li>
           </ul>
 
-          <p><strong>4. Apuesta Oficial:</strong> Antes del inicio del primer partido de cada fase, se determinará y publicará la "Apuesta Oficial", la cual corresponderá al marcador más repetido entre todas las propuestas enviadas por los participantes.</p>
-          <p><strong>5. Continuidad:</strong> Al finalizar la etapa inicial, el juego continuará bajo esta misma dinámica para cada fase eliminatoria.</p>
+          <p><strong>4. Apuesta Oficial:</strong> Luego de consolidar las propuestas de los participantes, se definió una apuesta oficial de $50.000 por participante.</p>
+          <p><strong>5. Recaudo de la Apuesta:</strong> Se encuentra en discusión la modalidad de recaudo. Las opciones propuestas son:
+                    • Realizar la consignación de la apuesta antes del inicio de la competencia.
+                    • Realizar el pago una vez finalizada la fase de grupos, efectuando la transferencia directamente a los ganadores.</p>
+          <p><strong>6. Premiación:</strong> La distribución de premios se realizará con base en la clasificación final obtenida al cierre de la fase de grupos, según las condiciones que se acuerden entre los participantes.</p>
+          <p><strong>7. Continuidad del Juego:</strong> Finalizada la fase de grupos, se evaluará la continuidad de la Chicken Mundialista para las fases eliminatorias, manteniendo la misma dinámica de participación y puntuación.</p>
         </div>
           <h3 style={{ marginBottom: "15px" }}>
             Información del participante
