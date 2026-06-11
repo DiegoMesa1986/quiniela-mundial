@@ -92,7 +92,7 @@ const matches = [
 
 // ✅ PARTIDOS resultados
 const resultteams = [
-  { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Ciudad de México", "1": "México", "3": "Sudáfrica" },
+  // { "id": 1, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Ciudad de México", "1": "México", "3": "Sudáfrica" },
   // { "id": 2, "group": "A", "date": "11 Jun 2026", "stadium": "Estadio Guadalajara", "a": "Corea del Sur", "b": "República Checa" },
   // { "id": 3, "group": "B", "date": "12 Jun 2026", "stadium": "Estadio Toronto", "a": "Canadá", "b": "Bosnia y Herzegovina" },
   // { "id": 4, "group": "D", "date": "12 Jun 2026", "stadium": "Estadio Los Angeles", "a": "Estados Unidos", "b": "Paraguay" },
@@ -167,7 +167,7 @@ const resultteams = [
 ];
 // ✅ RESULTADOS REALES
 const results = {
-  // 1: { a: 2, b: 1 },
+  1: { a: 2, b: 1 },
   // 2: { a: 0, b: 0 },
   // 3: { a: 0, b: 0 },
   // 4: { a: 0, b: 0 },
