@@ -691,7 +691,7 @@ if (new Date() > deadline) {
               📊 Tabla de posiciones - Grupo {groupFilter}
             </h3>
 
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
               <table style={{
                 width: "100%",
                 maxWidth: "600px",
