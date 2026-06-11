@@ -645,11 +645,11 @@ if (new Date() > deadline) {
 
           <br />
 
-          <div style={{ textAlign: "center" }}>
+          {/* <div style={{ textAlign: "center" }}>
             <button style={button} onClick={handleSave}>
               Guardar Pronóstico
             </button>
-          </div> *
+          </div>  */}
         </div>
 
         {/* RANKING */}
