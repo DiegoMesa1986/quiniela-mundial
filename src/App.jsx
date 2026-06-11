@@ -657,7 +657,6 @@ if (new Date() > deadline) {
               <tr>
                 <th>#</th>
                 <th>Participante</th>
-                <th>Apuesta Propuesta</th>
                 <th>Total</th>
                 <th>Exactos</th>
                 <th>Ganador</th>
