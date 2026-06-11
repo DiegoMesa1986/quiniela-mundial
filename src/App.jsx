@@ -549,7 +549,7 @@ if (new Date() > deadline) {
 
           {/* ✅ TABS */}
           
-        <div style={{
+{/*         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
           gap: "8px",
@@ -580,7 +580,7 @@ if (new Date() > deadline) {
 
           ))}
 
-          </div>
+          </div> */}
           
           {/* MATCHES */}
 {/*           <div style={gridMatches}>
