@@ -691,40 +691,45 @@ if (new Date() > deadline) {
               📊 Tabla de posiciones - Grupo {groupFilter}
             </h3>
 
-                <table style={{
-                  width: "70%",
-                  textAlign: "center",
-                  borderCollapse: "collapse",
-                  marginTop: "10px"
-                }}>
-                  <thead>
-                    <tr>
-                      <th>Equipo</th>
-                      <th>PTS</th>
-                      <th>GF</th>
-                      <th>GC</th>
-                      <th>DG</th>
-                    </tr>
-                  </thead>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <table style={{
+                width: "100%",
+                maxWidth: "600px",
+                textAlign: "center",
+                borderCollapse: "collapse",
+                marginTop: "10px"
+              }}>
+                <thead style={{ background: "#f3f4f6" }}>
+                  <tr>
+                    <th style={{ padding: "10px" }}>Equipo</th>
+                    <th style={{ padding: "10px" }}>PTS</th>
+                    <th style={{ padding: "10px" }}>GF</th>
+                    <th style={{ padding: "10px" }}>GC</th>
+                    <th style={{ padding: "10px" }}>DG</th>
+                  </tr>
+                </thead>
 
-                  <tbody>
-                    {calculateGroupTable(groupFilter).map((t, i) => (
-                      <tr
-                        key={i}
-                        style={{
-                          background: i < 2 ? "#dcfce7" : "transparent"
-                        }}
-                      >
-                        <td style={{ fontWeight: "bold" }}>{t.team}</td>
-                        <td>{t.pts}</td>
-                        <td>{t.gf}</td>
-                        <td>{t.gc}</td>
-                        <td>{t.dg > 0 ? `+${t.dg}` : t.dg}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                <tbody>
+                  {calculateGroupTable(groupFilter).map((t, i) => (
+                    <tr
+                      key={i}
+                      style={{
+                        background: i < 2 ? "#dcfce7" : "transparent",
+                        borderBottom: "1px solid #e5e7eb"
+                      }}
+                    >
+                      <td style={{ padding: "10px", fontWeight: "bold" }}>{t.team}</td>
+                      <td style={{ padding: "10px" }}>{t.pts}</td>
+                      <td style={{ padding: "10px" }}>{t.gf}</td>
+                      <td style={{ padding: "10px" }}>{t.gc}</td>
+                      <td style={{ padding: "10px" }}>
+                        {t.dg > 0 ? `+${t.dg}` : t.dg}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
               ``
         </div> 
 
@@ -803,10 +808,8 @@ if (new Date() > deadline) {
             </tbody>
           </table>
         </div>
-
+      </div>            
       </div>
     </div>
   );
 }
-
-export default App;
