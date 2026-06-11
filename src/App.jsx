@@ -765,3 +765,5 @@ if (new Date() > deadline) {
     </div>
   );
 }
+
+export default App;
