@@ -248,30 +248,34 @@ function App() {
   const [predictions, setPredictions] = useState({});
   const [participants, setParticipants] = useState([]);
   const [groupFilter, setGroupFilter] = useState("A");
-  const downloadParticipantExcel = (participant) => {
-        console.log(participant); 
+  
+const downloadParticipantExcel = (participant) => {
+  if (!participant.predictions) {
+    alert("Este participante no tiene datos");
+    return;
+  }
 
-        if (!participant.predictions) {
-          alert("Este participante no tiene datos");
-          return;
-        }
+  const data = matches.map((m) => {
+    const p = participant.predictions[m.id] || {};
 
-        const data = results.map((m) => ({
-          Partido: m.id,
-          Grupo: m.group,
-          Equipo_1: m.a,
-          Goles_1: participant.predictions[m.id]?.a ?? "",
-          Equipo_2: m.b,
-          Goles_2: participant.predictions[m.id]?.b ?? ""
-        }));
+    return {
+      Partido: m.id,
+      Grupo: m.group,
+      Equipo_1: m.a,
+      Goles_1: p.a ?? "",
+      Equipo_2: m.b,
+      Goles_2: p.b ?? ""
+    };
+  });
 
-        const worksheet = XLSX.utils.json_to_sheet(data);
-        const workbook = XLSX.utils.book_new();
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
 
-        XLSX.utils.book_append_sheet(workbook, worksheet, "Pronostico");
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Pronostico");
 
-        XLSX.writeFile(workbook, `Pronostico_${participant.name}.xlsx`);
-      };
+  XLSX.writeFile(workbook, `Pronostico_${participant.name}.xlsx`);
+};
+
   
       const calculateGroupTable = (group) => {
           const groupMatches = matches.filter((m) => m.group === group);
