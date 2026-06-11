@@ -448,35 +448,6 @@ if (new Date() > deadline) {
     XLSX.writeFile(workbook, "ranking_quiniela.xlsx");
   };
 
-  // Descargar mi pronóstico (según el correo actual)
-  const downloadMyPredictionExcel = () => {
-    if (!email) return alert("Ingresa tu correo para descargar tu pronóstico");
-
-    const participant = participants.find((p) => p.email === email);
-    if (!participant) return alert("No se encontró el pronóstico para este correo");
-
-    const preds = participant.predictions || {};
-    const data = Object.keys(preds).map((id) => {
-      const m = resultteams.find((mm) => Number(mm.id) === Number(id));
-      const p = preds[id] || {};
-      return {
-         Id: id,
-        Partido: m ? `${m.a} vs ${m.b}` : `Partido ${id}`,
-        EquipoA: m?.a || "Equipo A",
-        EquipoB: m?.b || "Equipo B",
-        PredA: p.a ?? "",
-        PredB: p.b ?? "",
-      };
-    });
-
-    if (data.length === 0) return alert("No hay pronósticos para descargar");
-
-    const worksheet = XLSX.utils.json_to_sheet(data);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "MiPronostico");
-    XLSX.writeFile(workbook, `pronostico_${participant.name || 'usuario'}.xlsx`);
-  };
-
   // ✅ CARGAR RANKING
   const loadParticipants = async () => {
     const data = await getDocs(collection(db, "predictions"));
