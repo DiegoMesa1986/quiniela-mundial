@@ -547,6 +547,38 @@ if (new Date() > deadline) {
         <div style={card}>
           <h3>Resultados Oficiales</h3>
 
+          
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "8px",
+              marginTop: "10px"
+            }}>
+              <span style={{
+                background: "#2563eb",
+                color: "#fff",
+                padding: "8px 12px",
+                borderRadius: "8px",
+                fontWeight: "bold"
+              }}>
+                {results[m.id]?.a ?? "-"}
+              </span>
+
+              <span style={{ fontWeight: "bold" }}>-</span>
+
+              <span style={{
+                background: "#2563eb",
+                color: "#fff",
+                padding: "8px 12px",
+                borderRadius: "8px",
+                fontWeight: "bold"
+              }}>
+                {results[m.id]?.b ?? "-"}
+              </span>
+            </div>
+
+
           {/* ✅ TABS */}
           
          <div style={{
@@ -583,7 +615,7 @@ if (new Date() > deadline) {
           </div> 
           
           {/* MATCHES */}
-          {/* <div style={gridMatches}>
+          <div style={gridMatches}>
           {filteredMatches.map((m) => (
             <div key={m.id} style={matchCard}>
 
@@ -628,11 +660,11 @@ if (new Date() > deadline) {
 
           <br />
 
-          <div style={{ textAlign: "center" }}>
+         {/*  <div style={{ textAlign: "center" }}>
             <button style={button} onClick={handleSave}>
               Guardar Pronóstico
             </button>
-          </div> */}
+          </div>  */}
         </div>
 
         {/* RANKING */}
