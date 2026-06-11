@@ -611,7 +611,7 @@ if (new Date() > deadline) {
                     minWidth: "40px",
                     textAlign: "center"
                   }}>
-                    {results[m.id]?.a ?? "-"}
+                    {results[String(m.id)]?.a ?? "-"}
                   </span>
 
                   <span style={{ fontWeight: "bold", fontSize: "18px" }}>
@@ -628,7 +628,7 @@ if (new Date() > deadline) {
                     minWidth: "40px",
                     textAlign: "center"
                   }}>
-                    {results[m.id]?.b ?? "-"}
+                    {results[String(m.id)]?.b ?? "-"}
                   </span>
                 </div>
               </div>
