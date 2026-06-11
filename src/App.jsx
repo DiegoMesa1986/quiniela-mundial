@@ -358,7 +358,7 @@ if (new Date() > deadline) {
     await addDoc(collection(db, "predictions"), {
             name,
             email,
-            bet: Number(bet),
+            /* bet: Number(bet), */
             predictions, 
             score: scoreData.total,
             exact: scoreData.exact,
@@ -370,7 +370,7 @@ if (new Date() > deadline) {
 
     setName("");
     setEmail("");
-    setBet("");
+    /* setBet(""); */
     setPredictions({});
 
     loadParticipants();
