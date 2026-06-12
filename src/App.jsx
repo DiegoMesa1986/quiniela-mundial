@@ -94,7 +94,7 @@ const matches = [
 // ✅ RESULTADOS REALES
 const results = {
   1: { a: 2, b: 0 },
-  2: { a: 0, b: 0 },
+  2: { a: 0, b: 1 },
   // 3: { a: 0, b: 0 },
   // 4: { a: 0, b: 0 },
   // 5: { a: 0, b: 0 },
