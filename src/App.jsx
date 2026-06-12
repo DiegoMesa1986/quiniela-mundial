@@ -545,7 +545,7 @@ if (new Date() > deadline) {
                   </span>
 
                   <span style={{
-                    background: "#2563eb",
+                    background: "#1c263b",
                     color: "#fff",
                     padding: "8px 14px",
                     borderRadius: "8px",
