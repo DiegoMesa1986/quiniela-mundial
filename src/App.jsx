@@ -5,6 +5,13 @@ import { db } from "./firebase";
 import {
   container,
   card,
+  rankingCard,
+  rankingTable,
+  rankingHeaderCell,
+  rankingRowCell,
+  rankingRankCell,
+  rankingLastCell,
+  rankingBadge,
   input,
   button,
   grid3,
@@ -621,31 +628,23 @@ if (new Date() > deadline) {
           </div>  */}
         </div>
 
+                  
         {/* RANKING */}
-        <div style={card}>
-          <h3>🏆 Ranking</h3>
+        <div style={rankingCard}>
+          <div style={rankingBadge}>🏆 Ranking general</div>
+          <h3 style={{ marginTop: 0, marginBottom: "8px" }}>Participantes</h3>
+          <p style={{ marginTop: 0, marginBottom: "18px", color: "#cbd5e1" }}>
+            Tabla independiente para que el ranking se lea como un bloque propio y no como parte de otra sesión.
+          </p>
 
-          <div style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginBottom: "10px"
-          }}>
-          </div>
-
-          <div style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginBottom: "10px"
-          }}>
-          </div>
-          <table style={{ width: "100%" }}>
+          <table style={rankingTable}>
             <thead>
               <tr>
-                <th>#</th>
-                <th>Participante</th>
-                <th>Total</th>
-                <th>Exactos</th>
-                <th>Ganador</th>
+                <th style={rankingHeaderCell}>#</th>
+                <th style={rankingHeaderCell}>Participante</th>
+                <th style={rankingHeaderCell}>Total</th>
+                <th style={rankingHeaderCell}>Exactos</th>
+                <th style={rankingHeaderCell}>Ganador</th>
               </tr>
             </thead>
             <tbody>
@@ -663,13 +662,13 @@ if (new Date() > deadline) {
                   .sort((a, b) => b.score - a.score)
                   .map((p, i) => (
                   <tr key={i}>
-                    <td>
+                    <td style={rankingRankCell}>
                       {i === 0 && "🥇"}
                       {i === 1 && "🥈"}
                       {i === 2 && "🥉"}
                       {i > 2 && i + 1}
                     </td>
-                    <td>{p.name}</td>
+                    <td style={rankingRowCell}>{p.name}</td>
 {/*                     <td>
                       {new Intl.NumberFormat('es-CO', {
                        style: 'currency',
@@ -678,9 +677,9 @@ if (new Date() > deadline) {
                        maximumFractionDigits: 0,
                       }).format(p.bet)}
                     </td> */}
-                    <td>{p.score}</td>
-                    <td>{p.exact}</td>
-                    <td>{p.winner}</td>
+                    <td style={rankingRowCell}>{p.score}</td>
+                    <td style={rankingRowCell}>{p.exact}</td>
+                    <td style={rankingLastCell}>{p.winner}</td>
                   </tr>
                 ))}
             </tbody>

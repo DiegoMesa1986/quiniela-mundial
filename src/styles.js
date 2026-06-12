@@ -12,6 +12,71 @@ export const card = {
   boxShadow: "0 8px 25px rgba(0,0,0,0)"
 };
 
+export const rankingCard = {
+  background: "linear-gradient(180deg, #0f172a 0%, #111827 100%)",
+  color: "#f8fafc",
+  padding: "28px",
+  borderRadius: "20px",
+  marginBottom: "25px",
+  border: "1px solid rgba(148, 163, 184, 0.22)",
+  boxShadow: "0 18px 40px rgba(15, 23, 42, 0.18)"
+};
+
+export const rankingTable = {
+  width: "100%",
+  borderCollapse: "separate",
+  borderSpacing: "0 10px"
+};
+
+export const rankingHeaderCell = {
+  padding: "12px 14px",
+  textAlign: "left",
+  fontSize: "13px",
+  letterSpacing: "0.04em",
+  textTransform: "uppercase",
+  color: "#cbd5e1"
+};
+
+export const rankingRowCell = {
+  padding: "14px",
+  background: "rgba(255, 255, 255, 0.06)",
+  color: "#f8fafc"
+};
+
+export const rankingRankCell = {
+  padding: "14px",
+  background: "rgba(56, 189, 248, 0.15)",
+  color: "#e0f2fe",
+  fontWeight: "700",
+  textAlign: "center",
+  width: "70px",
+  borderTopLeftRadius: "14px",
+  borderBottomLeftRadius: "14px"
+};
+
+export const rankingLastCell = {
+  padding: "14px",
+  background: "rgba(255, 255, 255, 0.06)",
+  color: "#f8fafc",
+  borderTopRightRadius: "14px",
+  borderBottomRightRadius: "14px"
+};
+
+export const rankingBadge = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "8px",
+  padding: "8px 12px",
+  borderRadius: "999px",
+  background: "rgba(56, 189, 248, 0.14)",
+  color: "#7dd3fc",
+  fontSize: "12px",
+  fontWeight: "700",
+  letterSpacing: "0.03em",
+  textTransform: "uppercase",
+  marginBottom: "14px"
+};
+
 export const input = {
   padding: "12px",
   borderRadius: "10px",
