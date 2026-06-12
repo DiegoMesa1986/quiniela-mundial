@@ -400,6 +400,19 @@ if (new Date() > deadline) {
     (m) => m.group === groupFilter
   );
 
+  const rankingData = [...participants]
+    .map((p) => {
+      const scoreData = calculateScore(p.predictions);
+
+      return {
+        ...p,
+        score: scoreData.total,
+        exact: scoreData.exact,
+        winner: scoreData.winner
+      };
+    })
+    .sort((a, b) => b.score - a.score);
+
   return (
     <div style={container}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 15px" }}>
@@ -630,60 +643,63 @@ if (new Date() > deadline) {
 
                   
         {/* RANKING */}
+        
         <div style={rankingCard}>
           <div style={rankingBadge}>🏆 Ranking general</div>
-          <h3 style={{ marginTop: 0, marginBottom: "8px" }}>Participantes</h3>
-          <p style={{ marginTop: 0, marginBottom: "18px", color: "#cbd5e1" }}>
-            Tabla independiente para que el ranking se lea como un bloque propio y no como parte de otra sesión.
-          </p>
+          <div style={rankingHeader}>
+            <div>
+              <h3 style={rankingTitle}>Clasificación</h3>
+              <p style={rankingSubtitle}>
+                Sección aislada con podio y tarjetas para que se vea como un panel propio, no como una continuación de la tabla de partidos.
+              </p>
+            </div>
+            <div style={rankingStats}>{rankingData.length} participantes</div>
+          </div>
 
-          <table style={rankingTable}>
-            <thead>
-              <tr>
-                <th style={rankingHeaderCell}>#</th>
-                <th style={rankingHeaderCell}>Participante</th>
-                <th style={rankingHeaderCell}>Total</th>
-                <th style={rankingHeaderCell}>Exactos</th>
-                <th style={rankingHeaderCell}>Ganador</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[...participants]
-                  .map((p) => {
-                    const scoreData = calculateScore(p.predictions);
+          {rankingData.length ? (
+            <>
+              <div style={rankingPodiumGrid}>
+                {rankingData.slice(0, 3).map((p, i) => {
+                  const podiumStyles = [
+                    { background: "linear-gradient(180deg, rgba(250, 204, 21, 0.22), rgba(255, 255, 255, 0.06))", rankBg: "#facc15", rankColor: "#422006" },
+                    { background: "linear-gradient(180deg, rgba(148, 163, 184, 0.22), rgba(255, 255, 255, 0.06))", rankBg: "#cbd5e1", rankColor: "#0f172a" },
+                    { background: "linear-gradient(180deg, rgba(251, 146, 60, 0.22), rgba(255, 255, 255, 0.06))", rankBg: "#fb923c", rankColor: "#fff7ed" }
+                  ];
+                  const styles = podiumStyles[i] || podiumStyles[2];
 
-                    return {
-                      ...p,
-                      score: scoreData.total,
-                      exact: scoreData.exact,
-                      winner: scoreData.winner
-                    };
-                  })
-                  .sort((a, b) => b.score - a.score)
-                  .map((p, i) => (
-                  <tr key={i}>
-                    <td style={rankingRankCell}>
-                      {i === 0 && "🥇"}
-                      {i === 1 && "🥈"}
-                      {i === 2 && "🥉"}
-                      {i > 2 && i + 1}
-                    </td>
-                    <td style={rankingRowCell}>{p.name}</td>
-{/*                     <td>
-                      {new Intl.NumberFormat('es-CO', {
-                       style: 'currency',
-                       currency: 'COP',
-                       minimumFractionDigits: 0,
-                       maximumFractionDigits: 0,
-                      }).format(p.bet)}
-                    </td> */}
-                    <td style={rankingRowCell}>{p.score}</td>
-                    <td style={rankingRowCell}>{p.exact}</td>
-                    <td style={rankingLastCell}>{p.winner}</td>
-                  </tr>
+                  return (
+                    <div key={p.email || p.name || i} style={{ ...rankingPodiumCard, ...rankingPodiumTop, background: styles.background }}>
+                      <div style={{ ...rankingPodiumRank, background: styles.rankBg, color: styles.rankColor }}>
+                        {i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}
+                      </div>
+                      <p style={rankingPodiumName}>{p.name}</p>
+                      <p style={rankingPodiumMeta}>Puesto {i + 1}</p>
+                      <div style={rankingScore}>{p.score} pts</div>
+                      <div style={rankingMiniStats}>
+                        <span style={rankingChip}>{p.exact} exactos</span>
+                        <span style={rankingChip}>{p.winner} ganador/empate</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div style={rankingList}>
+                {rankingData.slice(3).map((p, i) => (
+                  <div key={p.email || p.name || i} style={rankingListItem}>
+                    <div style={rankingListRank}>{i + 4}</div>
+                    <div>
+                      <p style={rankingListName}>{p.name}</p>
+                      <p style={rankingListMeta}>{p.exact} exactos · {p.winner} ganador/empate</p>
+                    </div>
+                    <div style={rankingListScore}>{p.score} pts</div>
+                  </div>
                 ))}
-            </tbody>
-          </table>
+              </div>
+            </>
+          ) : (
+            <div style={rankingEmpty}>Todavía no hay participantes cargados.</div>
+          )}
         </div>
       </div>            
       </div>

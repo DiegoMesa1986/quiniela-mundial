@@ -77,6 +77,161 @@ export const rankingBadge = {
   marginBottom: "14px"
 };
 
+export const rankingHeader = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-end",
+  gap: "16px",
+  marginBottom: "18px",
+  flexWrap: "wrap"
+};
+
+export const rankingTitle = {
+  marginTop: 0,
+  marginBottom: "6px",
+  fontSize: "24px",
+  lineHeight: 1.1
+};
+
+export const rankingSubtitle = {
+  margin: 0,
+  color: "#cbd5e1",
+  maxWidth: "680px",
+  lineHeight: 1.5
+};
+
+export const rankingStats = {
+  padding: "12px 14px",
+  borderRadius: "14px",
+  background: "rgba(255, 255, 255, 0.06)",
+  color: "#e2e8f0",
+  fontWeight: 700,
+  whiteSpace: "nowrap"
+};
+
+export const rankingPodiumGrid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
+  gap: "14px",
+  marginBottom: "18px"
+};
+
+export const rankingPodiumCard = {
+  padding: "18px",
+  borderRadius: "18px",
+  border: "1px solid rgba(255, 255, 255, 0.12)",
+  background: "rgba(255, 255, 255, 0.05)",
+  boxShadow: "0 18px 30px rgba(2, 6, 23, 0.22)"
+};
+
+export const rankingPodiumTop = {
+  minHeight: "170px"
+};
+
+export const rankingPodiumRank = {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minWidth: "44px",
+  height: "44px",
+  borderRadius: "999px",
+  fontSize: "18px",
+  fontWeight: 800,
+  marginBottom: "12px"
+};
+
+export const rankingPodiumName = {
+  margin: 0,
+  fontSize: "20px",
+  fontWeight: 800,
+  color: "#fff"
+};
+
+export const rankingPodiumMeta = {
+  margin: "6px 0 0",
+  color: "#cbd5e1"
+};
+
+export const rankingScore = {
+  marginTop: "14px",
+  fontSize: "30px",
+  fontWeight: 900,
+  color: "#f8fafc"
+};
+
+export const rankingMiniStats = {
+  display: "flex",
+  gap: "8px",
+  marginTop: "12px",
+  flexWrap: "wrap"
+};
+
+export const rankingChip = {
+  padding: "6px 10px",
+  borderRadius: "999px",
+  background: "rgba(255, 255, 255, 0.08)",
+  color: "#e2e8f0",
+  fontSize: "12px",
+  fontWeight: 700
+};
+
+export const rankingList = {
+  display: "grid",
+  gap: "12px"
+};
+
+export const rankingListItem = {
+  display: "grid",
+  gridTemplateColumns: "70px 1fr auto",
+  gap: "14px",
+  alignItems: "center",
+  padding: "14px 16px",
+  borderRadius: "16px",
+  background: "rgba(255, 255, 255, 0.06)",
+  border: "1px solid rgba(255, 255, 255, 0.08)"
+};
+
+export const rankingListRank = {
+  width: "54px",
+  height: "54px",
+  borderRadius: "16px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  background: "rgba(56, 189, 248, 0.16)",
+  color: "#e0f2fe",
+  fontSize: "18px",
+  fontWeight: 800
+};
+
+export const rankingListName = {
+  margin: 0,
+  color: "#fff",
+  fontSize: "16px",
+  fontWeight: 800
+};
+
+export const rankingListMeta = {
+  margin: "4px 0 0",
+  color: "#cbd5e1",
+  fontSize: "13px"
+};
+
+export const rankingListScore = {
+  textAlign: "right",
+  color: "#fff",
+  fontSize: "22px",
+  fontWeight: 900,
+  minWidth: "90px"
+};
+
+export const rankingEmpty = {
+  padding: "18px",
+  borderRadius: "16px",
+  background: "rgba(255, 255, 255, 0.06)",
+  color: "#cbd5e1"
+};
+
 export const input = {
   padding: "12px",
   borderRadius: "10px",
